@@ -1,6 +1,7 @@
 
 <!doctype html>
 <html lang="en">
+{% load static %}
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -48,14 +49,14 @@
 <header>
 <nav class="navbar navbar-expand-lg navbar-light fst-italic" style="background-color: #efc07a;">
   <div class="container-fluid">
-    <a class="navbar-brand col-md-9" href="#">My awesome blog</a>
+    <a class="navbar-brand col-md-9" href="{% url 'home' %}">My awesome blog</a>
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
     <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
       <div class="navbar-nav">
-        <a class="nav-link" href="#">About Me</a>
-        <a class="nav-link" href="#">Facebook</a>
+        <a class="nav-link" href="{% static 'AboutMe.txt' %}">About Me</a>
+        <a class="nav-link" target="_blank" rel="noopener noreferrer" href="https://facebook.com">Facebook</a>
         <a class="nav-link active" href="#">Blog</a>
       </div>
     </div>
@@ -68,9 +69,9 @@
 <h1 class="pt-4 pb-5"> Recent posts</h1>
 
   {% for post in posts.all %}
-  <a href=""><h2>{{ post.title }}</h2></a>
+  <a href="{% url 'specific_post' post.id %}"><h2>{{ post.title }}</h2></a>
   <br/>
-  <img src="{{ post.image.url }}" height=300 width=300 class="img-fluid"/>
+  <img src="{{ post.image.url }}" height=300 width=300 class="img-fluid">
   <br/>
   <p>{{ post.get_summary }}</p>
   <p>{{ post.date }}</p>

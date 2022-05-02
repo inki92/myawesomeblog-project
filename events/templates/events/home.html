@@ -1,6 +1,7 @@
 
 <!doctype html>
 <html lang="en">
+{% load static %}
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -54,9 +55,9 @@
     </button>
     <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
       <div class="navbar-nav">
-        <a class="nav-link" href="#">About Me</a>
-        <a class="nav-link" href="#">Facebook</a>
-        <a class="nav-link" href="#">Blog</a>
+        <a class="nav-link" href="{% static 'AboutMe.txt' %}">About Me</a>
+        <a class="nav-link" target="_blank" rel="noopener noreferrer" href="https://facebook.com">Facebook</a>
+        <a class="nav-link" href="{% url 'showblog' %}">Blog</a>
       </div>
     </div>
   </div>
@@ -72,6 +73,9 @@
         <p>
           <a href="mailto:test_name@gmail.com" class="btn btn-primary my-2">Mail me</a>
         </p>
+
+        <img src="{% static 'image.jpg' %}" height=300 width=300 class="img-fluid">
+
       </div>
     </div>
   </section>
@@ -85,7 +89,7 @@
 
         <div class="col-md-4">
           <div class="card mb-4 shadow-sm">
-            <img class="card-img-top" src="{{ event.event_image.url }}" />
+            <img class="card-img-top" src="{{ event.event_image.url }}" height=300 width=300 class="img-fluid" />
             <div class="card-body">
                 <p class="card-text"> {{ event.event_text }}</p>
             </div>
